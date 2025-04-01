@@ -1,3 +1,6 @@
+<!-- añadir una imagen -->
+![Logo UCU](https://profesionalonline.com.uy/wp-content/uploads/2021/10/catolica.png)
+
 # Modelos formales
 
 ## Entrega de Simulación
