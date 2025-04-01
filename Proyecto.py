@@ -27,7 +27,7 @@ for replica in range(num_replicas):
     datos_replica = []
 
     for dia in range(dias_simulacion):
-        if dia == 4:
+        if dia == 3:
             stock_actual = stock_actual + 10 + produccion_diaria[dia] - demanda_diaria
         else:
             stock_actual = stock_actual + produccion_diaria[dia] - demanda_diaria
@@ -66,6 +66,7 @@ df_primera_replica = pd.DataFrame(primer_repl_data, columns=[
 # Formatear "Aleatorio" para mostrar hasta 5 decimales
 df_primera_replica["Aleatorio"] = df_primera_replica["Aleatorio"].apply(lambda x: f"{x:.5f}")
 
+
 # ----------- Gráfico de evolución de la primera réplica -----------
 plt.figure(figsize=(10, 5))
 sns.lineplot(x=df_primera_replica["Día"], y=df_primera_replica["Stock Final"], marker="o", label="Stock Final")
@@ -77,6 +78,13 @@ plt.title("Evolución del Stock y Producción en la Primera Réplica")
 plt.legend()
 plt.tight_layout()
 plt.show()
+
+
+# Formatear el resto de variables para que sean enteros
+df_primera_replica["Producción"] = df_primera_replica["Producción"].apply(lambda x: f"{x:d}")
+df_primera_replica["Stock Final"] = df_primera_replica["Stock Final"].apply(lambda x: f"{x:d}")
+df_primera_replica["¿No se Abastece?"] = df_primera_replica["¿No se Abastece?"].apply(lambda x: f"{x:d}")
+df_primera_replica["Día"] = df_primera_replica["Día"].apply(lambda x: f"{x:d}")
 
 # ----------- Interfaz gráfica (GUI) con tkinter y pandastable -----------
 class App(tk.Tk):
